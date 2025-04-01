@@ -39,7 +39,7 @@ jobs:
           docker push ${{ env.DOCKER_IMAGE_NAME }}:${{ env.VERSION }}
           docker rmi ${{ env.DOCKER_IMAGE_NAME }}:${{ env.VERSION }}
 
-      - name: Checkout helm chart repo
+      - name: Checkout helm chart repos
         uses: actions/checkout@v3
         with:
           repository: MarcoLuw/app-helmchart
@@ -56,6 +56,8 @@ jobs:
           sed -i "s|  repository: .* | repository: \"${{ env.DOCKER_IMAGE_NAME }}\"|" ${{ env.HELM_VALUE_FILE }}
           git config --global user.email "andrelu@lgcns.com"
           git config --global user.name "Andrelu"
+          git status
+          git config list
           git add .
           git commit -m "Update to version ${{ env.VERSION }}"
           git push https://marcoluw:${{ secrets.GITHUB_TOKEN }}@github.com/marcoluw/app-helmchart.git
