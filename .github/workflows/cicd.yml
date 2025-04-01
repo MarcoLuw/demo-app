@@ -57,7 +57,9 @@ jobs:
           git config --global user.email "andrelu@lgcns.com"
           git config --global user.name "Andrelu"
           git status
-          git config list
+          git remote -v
+          git remote set-url origin https://github.com/MarcoLuw/app-helmchart.git
+          git remote -v
           git add .
           git commit -m "Update to version ${{ env.VERSION }}"
           git push https://marcoluw:${{ secrets.GITHUB_TOKEN }}@github.com/marcoluw/app-helmchart.git
