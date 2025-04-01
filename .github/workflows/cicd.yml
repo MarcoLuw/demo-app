@@ -54,8 +54,8 @@ jobs:
           cd ${{ env.HELM_REPO }}
           sed -i "s|  tag: .*|  tag: \"${{ env.VERSION }}\"|" ${{ env.HELM_VALUE_FILE }}
           sed -i "s|  repository: .* | repository: \"${{ env.DOCKER_IMAGE_NAME }}\"|" ${{ env.HELM_VALUE_FILE }}
-          git config --global user.email "action@github.com"
-          git config --global user.name "GitHub Action"
+          git config --global user.email "jace@lgcns.com"
+          git config --global user.name "Jace Action"
           git status
           git config list
           git add .
