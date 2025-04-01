@@ -60,4 +60,4 @@ jobs:
           git config list
           git add .
           git commit -m "Update to version ${{ env.VERSION }}"
-          git push https://marcoluw:${{ secrets.GH_PAT }}@github.com/marcoluw/app-helmchart.git
+          git push https://marcoluw:${{ secrets.GITHUB_TOKEN }}@github.com/marcoluw/app-helmchart.git
