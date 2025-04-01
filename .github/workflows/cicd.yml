@@ -54,10 +54,10 @@ jobs:
           cd ${{ env.HELM_REPO }}
           sed -i "s|  tag: .*|  tag: \"${{ env.VERSION }}\"|" ${{ env.HELM_VALUE_FILE }}
           sed -i "s|  repository: .* | repository: \"${{ env.DOCKER_IMAGE_NAME }}\"|" ${{ env.HELM_VALUE_FILE }}
-          # git status
-          # git remote -v
-          # git remote set-url origin https://github.com/MarcoLuw/app-helmchart.git
-          # git remote -v
+          git config --global user.email "action@github.com"
+          git config --global user.name "GitHub Action"
+          git status
+          git config list
           git add .
           git commit -m "Update to version ${{ env.VERSION }}"
           git push https://marcoluw:${{ secrets.GH_PAT }}@github.com/marcoluw/app-helmchart.git
